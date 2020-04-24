@@ -9,9 +9,10 @@ RUN wget -q https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-$
  && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
  && ln -s /spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /spark
 
-RUN apk add shell coreutils procps
-RUN apk fetch openjdk8
-RUN apk add openjdk8
-RUN pip3 install ipython
+RUN apk update && \
+    apk add coreutils procps && \
+    apk fetch openjdk8 && \
+    apk add openjdk8 && \
+    pip3 install ipython
 
 ENV PYSPARK_DRIVER_PYTHON ipython
