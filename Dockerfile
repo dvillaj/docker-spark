@@ -10,7 +10,7 @@ RUN wget -q https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-$
  && ln -s /spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /spark
 
 RUN apk update && \
-    apk add coreutils procps && \
+    apk add bash coreutils procps && \
     apk fetch openjdk8 && \
     apk add openjdk8 && \
     pip3 install ipython
