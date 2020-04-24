@@ -1,0 +1,8 @@
+sudo: required
+services:
+    - docker
+
+script:
+    - docker build -t dvillaj/spark .
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push dvillaj/spark
